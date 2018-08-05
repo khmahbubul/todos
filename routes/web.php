@@ -19,4 +19,6 @@ Route::get('/new', 'PagesController@new');
 
 Route::get('/todos', 'TodosController@index');
 
+Route::get('/todos/delete/{id}', 'TodosController@delete')->where(['id' => '[0-9]+'])->name('todo.delete');
+
 Route::post('/create/todo', 'TodosController@store');
