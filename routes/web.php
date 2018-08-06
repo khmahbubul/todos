@@ -15,10 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/new', 'PagesController@new');
-
-Route::get('/todos', 'TodosController@index');
+Route::get('/todos', 'TodosController@index')->name('todos');
 
 Route::get('/todos/delete/{id}', 'TodosController@delete')->where(['id' => '[0-9]+'])->name('todo.delete');
 
+Route::get('/todo/edit/{id}', 'TodosController@edit')->where(['id' => '[0-9]+'])->name('todo.edit');
+
+Route::get('/todo/completed/{id}', 'TodosController@completed')->name('todo.completed');
+
 Route::post('/create/todo', 'TodosController@store');
+
+Route::post('/update/todo/{id}', 'TodosController@update')->where(['id' => '[0-9]+'])->name('todo.update');

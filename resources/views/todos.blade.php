@@ -12,6 +12,14 @@
     <hr>
     @foreach($todos as $todo)
         {{ $todo->todo }} <a href="{{ route('todo.delete', ['id' => $todo->id]) }}" class="btn btn-danger"> x </a>
+        <a href="{{ route('todo.edit', ['id' => $todo->id]) }}" class="btn btn-info"> update </a>
+
+        @if(!$todo->completed)
+            <a href="{{ route('todo.completed', ['id' => $todo->id]) }}" class="btn btn-success"> completed </a>
+
+        @else
+            <span class="text-success">Completed!</span>
+        @endif
         <hr>
     @endforeach
 @stop
